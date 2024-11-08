@@ -10,21 +10,30 @@ public abstract class Operation extends Expression {
      *
      * @param operande1 Le premier opérande de l'opération.
      * @param operande2 Le second opérande de l'opération.
-     * @throws IllegalArgumentException Si un des opérandes est null.
-     * @throws MismatchException Si les types des opérandes ne correspondent pas.
+     * @throws IllegalArgumentException si l'un des opérandes ne correspond pas aux attentes.
      */
-    public Operation(Expression operande1, Expression operande2) throws MismatchException {
+    public Operation(Expression operande1, Expression operande2) {
         if (operande1 == null || operande2 == null) {
-            throw new IllegalArgumentException("Les opérandes ne peuvent pas être nuls.");
+            throw new IllegalArgumentException("Les opérandes ne peuvent pas être null.");
         }
-        
-        // Vérification de la correspondance des types entre les opérandes
-        if (!operande1.getClass().equals(operande2.getClass())) {
-            throw new MismatchException("Les types des opérandes doivent correspondre.");
+
+        // Exemple de vérification de type ou de valeur
+        if (!isValidOperande(operande1) || !isValidOperande(operande2)) {
+            throw new IllegalArgumentException("Les opérandes ne sont pas compatibles avec cette opération.");
         }
-        
+
         this.operande1 = operande1;
         this.operande2 = operande2;
+    }
+
+    /**
+     * Méthode de validation des opérandes.
+     * @param operande L'opérande à vérifier.
+     * @return true si l'opérande est valide, sinon false.
+     */
+    private boolean isValidOperande(Expression operande) {
+        // Ajoute des conditions de validation selon les besoins
+        return true;
     }
 
     /**
