@@ -1,5 +1,3 @@
-
-
 /**
  * Présentation de la classe principale de la calculatrice qui permet de tester des calculs.
  * Celle ci a été programmer pour une SAE en S2
