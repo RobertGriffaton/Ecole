@@ -1,7 +1,6 @@
 /**
  * Classe Operation
  */
-
 public abstract class Operation extends Expression {
     private Expression operande1;
     private Expression operande2;
@@ -11,8 +10,19 @@ public abstract class Operation extends Expression {
      *
      * @param operande1 Le premier opérande de l'opération.
      * @param operande2 Le second opérande de l'opération.
+     * @throws IllegalArgumentException Si un des opérandes est null.
+     * @throws MismatchException Si les types des opérandes ne correspondent pas.
      */
-    public Operation(Expression operande1, Expression operande2) {
+    public Operation(Expression operande1, Expression operande2) throws MismatchException {
+        if (operande1 == null || operande2 == null) {
+            throw new IllegalArgumentException("Les opérandes ne peuvent pas être nuls.");
+        }
+        
+        // Vérification de la correspondance des types entre les opérandes
+        if (!operande1.getClass().equals(operande2.getClass())) {
+            throw new MismatchException("Les types des opérandes doivent correspondre.");
+        }
+        
         this.operande1 = operande1;
         this.operande2 = operande2;
     }
